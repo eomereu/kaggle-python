@@ -93,3 +93,7 @@
     100<br>
     Which number is the biggest modulo 5?<br>
     14
+    
+- `pass` is a keyword that does literally nothing. We use it as a placeholder because after we begin a code block, Python requires at least one line of code
+
+- `round(num,ndigits)` ndigits sets the number of digits after the dot to be shown. May also be set to negative. If set as -1 then rounds to nearest 10, if set to -1 then rounds to nearest 100 and so on.
