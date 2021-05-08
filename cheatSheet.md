@@ -69,9 +69,9 @@
     # (In this case, we don't need to specify the name of the argument, because it's unambiguous.)
     greet("world")
     ```
-    Hello, Colin<br>
-    Hello, Kaggle<br>
-    Hello, world<br>
+    Hello, Colin  
+    Hello, Kaggle  
+    Hello, world  
     
 - Functions that operate on other functions are called *"Higher order functions."*
 
@@ -89,11 +89,81 @@
         sep='\n',
     )
     ```
-    Which number is biggest?<br>
-    100<br>
-    Which number is the biggest modulo 5?<br>
+    Which number is biggest?  
+    100  
+    Which number is the biggest modulo 5?  
     14
     
 - `pass` is a keyword that does literally nothing. We use it as a placeholder because after we begin a code block, Python requires at least one line of code
 
 - `round(num,ndigits)` ndigits sets the number of digits after the dot to be shown. May also be set to negative. If set as -1 then rounds to nearest 10, if set to -1 then rounds to nearest 100 and so on.
+
+## Booleans and Conditionals
+
+- `and` is evaluated before `or`.
+
+- We can also split it over multiple lines to emphasize the 3-part structure:
+    ```python
+    prepared_for_weather = (
+        have_umbrella 
+        or ((rain_level < 5) and have_hood) 
+        or (not (rain_level > 0 and is_workday))
+    )
+    ```
+
+- `if` - `elif` - `else`
+
+- As `int()` was turning things into integer, `bool()` function turns things into boolean:
+    ```python
+    print(bool(1)) # all numbers are treated as true, except 0
+    print(bool(0))
+    print(bool("asf")) # all strings are treated as true, except the empty string ""
+    print(bool(""))
+    # Generally empty sequences (strings, lists, and other types lists and tuples) are "falsey" and the rest are "truthy"
+    ```
+    True  
+    False  
+    True  
+    False
+
+- So we can use non-boolean objects in if conditions:
+    ```python
+    if 0:
+        print(0)
+    elif "spam":
+        print("spam")
+    ```
+    spam
+
+- Ternary operator: A more compct version of a conditional:
+    ```python
+    if total_candies == 1:
+        print("Splitting 1 candy")
+    else:
+        print("Splitting", total_candies, "candies")
+    ```
+    ```python
+    print("Splitting", total_candies, "candy" if total_candies == 1 else "candies")
+    ```
+
+- Another point of view:
+    ```python
+    def concise_is_negative(number):
+        return number < 0
+    ```
+
+- Return whether the customer wants exactly one of the three available toppings on their hot dog:  
+    ```python
+    def exactly_one_topping(ketchup, mustard, onion):
+        return True if int(ketchup) + int(mustard) + int(onion) == 1 else False
+    ```
+    More compact way:
+    ```python
+    def exactly_one_topping(ketchup, mustard, onion):
+        return (int(ketchup) + int(mustard) + int(onion)) == 1
+    ```
+    Fun fact: we don't technically need to call `int` on the arguments. Just by doing addition with booleans, Python implicitly does the integer conversion. So we could also write:
+    ```python
+    def exactly_one_topping(ketchup, mustard, onion):
+        return (ketchup + mustard + onion) == 1
+    ```
