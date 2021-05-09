@@ -152,6 +152,16 @@
         return number < 0
     ```
 
+- `int()` on boolean values will return 1 if bool is True, will return 0 if bool is False. *Just by doing addition with booleans, Python implicitly does the integer conversion.*
+    ```python
+    int(bool(True))
+    int(bool(False))
+    True + False + True
+    ```
+    1  
+    0  
+    2
+
 - Return whether the customer wants exactly one of the three available toppings on their hot dog:  
     ```python
     def exactly_one_topping(ketchup, mustard, onion):
@@ -167,3 +177,123 @@
     def exactly_one_topping(ketchup, mustard, onion):
         return (ketchup + mustard + onion) == 1
     ```
+
+
+## Lists
+Created  within square brackets `[]` and they are mutable/modifiable.
+- Elements at the end of the list can be accessed with negative numbers, starting from -1:
+    ```python
+    planets[-1]
+    ```
+    'Neptune'
+    ```python
+    planets[-2]
+    ```
+    'Uranus'
+
+- Slicing: Following corresponds to [0,3)
+    ```python
+    planets[0:3]
+    ```
+    ['Mercury', 'Venus', 'Earth']  
+
+    The starting and ending indices are both optional. If we leave out the start index, it's assumed to be 0.
+    ```python
+    planets[:3]
+    ```
+    ['Mercury', 'Venus', 'Earth']  
+
+    Following code gives all the planets from index 3 onward:
+    ```python
+    planets[3:]
+    ```
+    ['Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']  
+
+    We can also use negative indices when slicing:
+    ```python
+    # All the planets except the first and last
+    planets[1:-1]
+    ```
+    ['Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus']  
+    ```python
+    # The last 3 planets
+    planets[-3:]
+    ```
+    ['Saturn', 'Uranus', 'Neptune']
+
+- Changing lists:
+    ```python
+    planets[:3] = ['Mur', 'Vee', 'Ur']
+    ```
+
+- `len(list)` returns the length of a list.
+
+- `sorted(list)` returns a sorted version of a list.
+
+- `sum(list)` returns summation of the elements in a list.
+
+- **Everything** in Python is an object. Objects carry some things which we can access that stuff using *dot* syntax around with them.
+
+- `num.imag` For example, numbers in Python carry around an associated variable called `.imag` representing their imaginary part:
+    ```python
+    x = 12
+    # x is a real number, so its imaginary part is 0.
+    print(x.imag)
+    # Here's how to make a complex number, in case you've ever been curious:
+    c = 12 + 3j
+    print(c.imag)
+    ```
+    0  
+    3.0
+
+- The things an object carries around can also include functions. A function attached to an object is called a **method**. Non-function things attached to an object, such as `.imag`, are called **attributes**.
+
+- `num.bit_length()` returns the number of bits necessary to represent self in binary.
+
+- We can also pass in methods into `help`, *But without parantheses*:
+    ```python
+    help(num.bit_length)
+    ```
+
+### List Methods
+- `.append(object)` modifies a list by adding *object* to the end
+
+- `.pop()` removes and returns the last element of a list
+
+- `.pop(index)` removes and returns the element of a list with given index
+
+- `.remove(val)` removes first occurence of value. Raises `ValueError` if *val* is not in the list
+
+- `.index(val)` returns the index of given *val*. Raises `ValueError` if *val* is not in the list
+
+- `object in list` returns if *object* exists in list or not as True/False
+
+- `.clear()` removes all objects from list
+
+- `.count(val)` returns number of occurences of *val* in the list
+
+- `.insert(index, object)` inserts *object* before *index*
+
+- `.reverse()` reverses the list ***\*in place\****
+
+- `.sort()` sorts the list ***\*in place\****
+
+### Tuples
+Created within parantheses `()` or simply without any parantheses etc. and they are immutable/unmodifiable
+```python
+t = (1, 2, 3)
+# or
+u = 1, 2, 3
+```
+- Multiple return values can be individually assigned:
+    ```python
+    x = 0.125
+    x.as_integer_ratio()
+    ```
+    (1, 8)  
+
+    ```python
+    numerator, denominator = x.as_integer_ratio()
+    print(numerator / denominator)
+    ```
+    0.125
